@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -31,7 +30,7 @@ public class SerializationToCSV extends Products{
         outStream.close();
     }
 
-    public static void load(String filename) throws IOException, ParseException {
+    public static void load(String filename) throws IOException {
         Products.list.clear();
         Scanner scanner = new Scanner(new FileReader(filename));
         String str;
