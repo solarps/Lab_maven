@@ -16,7 +16,7 @@ public class Serialization extends Products {
     }
 
     public static void load(String filename) {
-        Products.list.clear();
+        list.clear();
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filename))) {
             list=((ArrayList<Product>)objectInputStream.readObject());
         } catch (Exception ex) {

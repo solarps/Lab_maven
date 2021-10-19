@@ -10,8 +10,7 @@ import java.util.Scanner;
 public class SerializationToCSV extends Products{
 
     public static void save(String filename) throws IOException {
-        FileWriter outStream = new FileWriter(filename);
-        BufferedWriter bw = new BufferedWriter(outStream);
+        BufferedWriter bw = new BufferedWriter(new FileWriter(filename));
         bw.write("Type;Count;Price;Manufacturer;Date;");
         bw.write(System.lineSeparator());
         for (Product product : list) {
@@ -27,11 +26,10 @@ public class SerializationToCSV extends Products{
             }
         }
         bw.close();
-        outStream.close();
     }
 
     public static void load(String filename) throws IOException {
-        Products.list.clear();
+        list.clear();
         Scanner scanner = new Scanner(new FileReader(filename));
         String str;
         scanner.nextLine();

@@ -29,5 +29,11 @@ public class Main {
         for (int i = 0; i < Products.list.size(); i++) {
             System.out.println(Products.list.get(i));
         }
+        SerializationToFASTJSON.save("FASTSave.json");
+        SerializationToFASTJSON.load("FASTSave.json");
+        System.out.println("\n--------------------------Serialization to FASTJSON--------------------------\n");
+        for (int i = 0; i < Products.list.size(); i++) {
+            System.out.println(Products.list.get(i));
+        }
     }
 }
