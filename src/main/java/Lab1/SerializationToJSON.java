@@ -21,21 +21,23 @@ public class SerializationToJSON extends Products{
     public static void load(String filename) throws IOException {
         list.clear();
         byte[] Data = Files.readAllBytes(Paths.get(filename));
-        ObjectMapper objectMapper= new ObjectMapper();
-        List<LinkedHashMap<String,?>> newList = objectMapper.readValue(Data, List.class);
+        List<LinkedHashMap<String,?>> newList = new ObjectMapper().readValue(Data, List.class);
+        List<Integer> arrDate;
         ProductType name;
+        Creators creators;
+        LocalDate date;
         int count,year,month,day;
         double price;
         for (LinkedHashMap<String,?> obj: newList){
             name = ProductType.valueOf((String) obj.get("name"));
             count = (int) obj.get("count");
             price = (double) obj.get("price");
-            Creators creators = Creators.valueOf((String)obj.get("creator"));
-            List<Integer> arrDate = (ArrayList) obj.get("date");
+            creators = Creators.valueOf((String)obj.get("creator"));
+            arrDate = (ArrayList) obj.get("date");
             year = arrDate.get(0);
             month = arrDate.get(1);
             day = arrDate.get(2);
-            LocalDate date = LocalDate.of(year,month,day);
+            date = LocalDate.of(year,month,day);
             list.add(new Product(name,count,price,creators,date));
         }
     }
