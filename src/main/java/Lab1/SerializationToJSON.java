@@ -33,7 +33,7 @@ public class SerializationToJSON extends Products{
             count = (int) obj.get("count");
             price = (double) obj.get("price");
             creators = Creators.valueOf((String)obj.get("creator"));
-            arrDate = (ArrayList) obj.get("date");
+            arrDate = (List<Integer>) obj.get("date");
             year = arrDate.get(0);
             month = arrDate.get(1);
             day = arrDate.get(2);
