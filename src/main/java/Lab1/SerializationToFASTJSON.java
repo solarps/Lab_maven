@@ -24,7 +24,7 @@ public class SerializationToFASTJSON extends Products{
         list.clear();
         try (Stream<String> lines = Files.lines(Paths.get(filename))) {
             String content = lines.collect(Collectors.joining());
-            Products.list = JSON.parseArray(content, Product.class);
+            list = JSON.parseArray(content, Product.class);
         } catch (IOException e) {
             e.printStackTrace();
         }

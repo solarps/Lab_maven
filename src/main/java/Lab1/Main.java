@@ -1,16 +1,34 @@
 package Lab1;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        for (int i = 0; i < 10; i++) {
-            Products.list.add(Product.setProduct());
-            System.out.println(Products.list.get(i));
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("If you want to load db from file enter 1 else enter 0");
+        int a = scanner.nextInt();
+        switch (a){
+            case 0:
+                for (int i = 0; i < 10; i++) {
+                    Products.list.add(Product.setProduct());
+                    System.out.println(Products.list.get(i));
+                    System.out.println("--------------------------");
+                    Products.getLowAveragePriceProduct();
+                }
+                break;
+            case 1:
+                Serialization.load("Save.txt");
+                SerializationToCSV.load("Save.csv");
+                SerializationToJSON.load("Save.json");
+                SerializationToFASTJSON.load("FASTSave.json");
+                break;
+            default:
+                System.out.println("Wrong number");
+                System.exit(0);
         }
-        System.out.println("--------------------------");
-        Products.getLowAveragePriceProduct();
+
         Serialization.save("Save.txt");
         Serialization.load("Save.txt");
         System.out.println("\n--------------------------Native Serialization--------------------------\n");
