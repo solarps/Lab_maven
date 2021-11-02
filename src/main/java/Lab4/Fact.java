@@ -33,7 +33,7 @@ public class Fact {
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append("factId=").append(factId).append(",");
-        sb.append("fact='").append(fact).append("\n");
+        sb.append("fact='").append(fact).append("'\n");
         return sb.toString();
     }
 }

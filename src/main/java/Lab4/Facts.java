@@ -26,6 +26,14 @@ public class Facts {
         this.data = data;
     }
 
+    public StringBuilder outData(){
+        final StringBuilder sb = new StringBuilder();
+        for (Fact fact:data) {
+            sb.append(fact);
+        }
+        return sb;
+    }
+
     @JsonGetter("total_facts")
     public int getTotalFacts() {
         return totalFacts;
@@ -36,7 +44,7 @@ public class Facts {
         final StringBuilder sb = new StringBuilder("Facts{");
         sb.append("img='").append(img).append('\'').append("\n");
         sb.append("totalFacts=").append(totalFacts).append("\n");
-        sb.append("Facts=").append(data);
+        sb.append("Facts=").append(outData());
         sb.append('}');
         return sb.toString();
     }
