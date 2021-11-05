@@ -1,5 +1,6 @@
 package Lab4;
 
+import java.util.Comparator;
 import java.util.Random;
 
 public class Main {
@@ -14,6 +15,10 @@ public class Main {
             exception.printStackTrace();
         }
         APIData data = DownloadThread.data;
+        System.out.println(data);
+        System.out.println("Sorted by name:");
+        data.getData().sort(Comparator.comparing(Anime::getAnimeName));
+        System.out.println(data);
         int i = random.nextInt(data.getData().size());
         String Anime_name = data.getData().get(i).getAnimeName();
         APIGetter apiGetter = new APIGetter();

@@ -3,21 +3,19 @@ package Lab4;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
-public class Datum {
+public class Anime{
 
     private int animeId;
     private String animeName;
     private String animeImg;
 
-    public Datum() {
+    public Anime() {
     }
 
-    public Datum(int animeId, String animeName, String animeImg) {
+    public Anime(int animeId, String animeName, String animeImg) {
         super();
         this.animeId = animeId;
         this.animeName = animeName;
@@ -36,4 +34,19 @@ public class Datum {
     public String getAnimeImg() {
         return animeImg;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("\nAnime{");
+        sb.append("animeId=").append(animeId);
+        sb.append(", animeName='").append(animeName).append('\'');
+        sb.append(", animeImg='").append(animeImg).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
+
+    /*@Override
+    public int compareTo(Anime anime) {
+        return animeName.compareTo(anime.getAnimeName());
+    }*/
 }
