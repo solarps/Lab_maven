@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Anime{
+public class Anime {
 
     private int animeId;
     private String animeName;
@@ -26,10 +26,12 @@ public class Anime{
     public int getAnimeId() {
         return animeId;
     }
+
     @JsonGetter("anime_name")
     public String getAnimeName() {
         return animeName;
     }
+
     @JsonGetter("anime_img")
     public String getAnimeImg() {
         return animeImg;
@@ -44,9 +46,4 @@ public class Anime{
         sb.append('}');
         return sb.toString();
     }
-
-    /*@Override
-    public int compareTo(Anime anime) {
-        return animeName.compareTo(anime.getAnimeName());
-    }*/
 }
