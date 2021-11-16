@@ -1,6 +1,8 @@
 package Lab4;
 
 import javax.swing.*;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,6 +31,8 @@ public class DBGUI implements ActionListener {
         for (int i = 0;i<names.length; i++){
             names[i] = data.getData().get(i).getAnimeName();
         }
+        resizeColumnWidth(table);
+
 
         comboBox = new JComboBox(names);
         button.setBounds(100, 160, 200, 40);
@@ -56,6 +60,21 @@ public class DBGUI implements ActionListener {
             Facts facts = (Facts) apiGetter.JsonParse(Facts.class);
 
             FactsGUI factsGUI = new FactsGUI(facts);
+        }
+    }
+
+    public void resizeColumnWidth(JTable table) {
+        final TableColumnModel columnModel = table.getColumnModel();
+        for (int column = 0; column < table.getColumnCount(); column++) {
+            int width = 30; // Min width
+            for (int row = 0; row < table.getRowCount(); row++) {
+                TableCellRenderer renderer = table.getCellRenderer(row, column);
+                Component comp = table.prepareRenderer(renderer, row, column);
+                width = Math.max(comp.getPreferredSize().width +1 , width);
+            }
+            if(width > 300)
+                width=300;
+            columnModel.getColumn(column).setPreferredWidth(width);
         }
     }
 }
